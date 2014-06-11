@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
+  root 'products#index'
+
   resources :photos
 
   resources :reviews
 
-  resources :users
+  resources :users do
+    resources :reviews
+  end
 
-  resources :products
+  resources :products do
+    resources :reviews
+    resources :photos
+  end
 
   resources :categories
 
