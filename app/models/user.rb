@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
                        format: { with: /\A(?=.*[a-z])[a-z\d]+\Z/i },
                        length: { in: 3..15 }
 	validates :password, presence: true,
-                       confirmation: true,
+                       confirmation: { message: "failed." },
                        length: { in: 6..20 }
 	validates :display,  presence: true,
 	                     length: { maximum: 20 }

@@ -69,6 +69,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :display, :avatar_url, :access)
+      params.require(:user).permit(:username, :password, :password_confirmation, :display, :avatar_url, :access)
     end
 end
