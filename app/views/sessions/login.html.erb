@@ -1,2 +1,9 @@
-<h1>Sessions#login</h1>
-<p>Find me in app/views/sessions/login.html.erb</p>
+<h1>Login</h1>
+
+<div class= "Sign_Form">
+	<%= form_tag '/login_attempt' do %>
+		<p>Username or Email:</br> <%= text_field_tag(:username) %></p> 
+		<p>Password:</br> <%= password_field_tag :login_password %></p> 
+		<%= submit_tag("Log In") %>
+	<% end %>
+</div>
