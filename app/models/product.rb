@@ -2,6 +2,9 @@ class Product < ActiveRecord::Base
 	before_save :default_values
 	belongs_to :category
 	# has_many :photos, :reviews
+	# Validation and handling of photos (here is where sizes and defult photo can be set)
+	has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  	validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
 	validates :name,           presence: true
 	validates :price_in_cents, numericality: {

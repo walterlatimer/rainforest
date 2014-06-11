@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611023554) do
+ActiveRecord::Schema.define(version: 20140611161040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,23 +24,6 @@ ActiveRecord::Schema.define(version: 20140611023554) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "items", force: true do |t|
-    t.text     "content"
-    t.boolean  "status"
-    t.integer  "list_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "items", ["list_id"], name: "index_items_on_list_id", using: :btree
-
-  create_table "lists", force: true do |t|
-    t.string   "title"
-    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,6 +46,10 @@ ActiveRecord::Schema.define(version: 20140611023554) do
     t.boolean  "featured"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
@@ -80,9 +67,9 @@ ActiveRecord::Schema.define(version: 20140611023554) do
   add_index "reviews", ["product_id"], name: "index_reviews_on_product_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
-  create_table "todolists", force: true do |t|
-    t.string   "task"
-    t.boolean  "completed"
+  create_table "things", force: true do |t|
+    t.string   "goal"
+    t.string   "details"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

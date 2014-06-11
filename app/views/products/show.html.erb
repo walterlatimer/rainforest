@@ -5,6 +5,9 @@
   <%= @product.name %>
 </p>
 
+<!-- Displaying photo (size can be changed) -->
+<%= image_tag @product.photo.url(:medium) %>
+
 <p>
   <strong>Price in cents:</strong>
   <%= @product.price_in_cents %>
