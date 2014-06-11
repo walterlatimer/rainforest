@@ -20,7 +20,16 @@ class User < ActiveRecord::Base
 
 	private
 	# Access level is 0 by default
-  def default_values
-    self.access ||= 1
-  end
+	def default_values
+		self.access ||= 1
+	end
+
+	def self.authenticate(username="", login_password="")
+		user = User.find_by_username(username)
+		if user && (user.password == login_password)
+			return user
+		else
+			return false
+		end
+	end
 end
