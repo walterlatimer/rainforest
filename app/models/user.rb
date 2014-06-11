@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 	before_save :default_values
 	has_many :reviews
 
-	validates :username, uniqueness: true,
+	validates :username, uniqueness: { case_sensitive: false },
                        presence: true,
                        format: { with: /\A(?=.*[a-z])[a-z\d]+\Z/i },
                        length: { in: 3..15 }
