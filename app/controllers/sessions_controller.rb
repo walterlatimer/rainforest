@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   def login
+  	if session[:user_id]
+  		redirect_to root_path
+  	end
   end
 
   def login_attempt
@@ -7,12 +10,17 @@ class SessionsController < ApplicationController
   	if authorized_user
   		session[:user_id] = authorized_user.id
   		flash[:success] = "Welcome back.  You are now logged in as #{authorized_user.username}"
-  		redirect_to(action: "home")
+  		redirect_to root_path
   	else
   		flash[:error] = "Invalid Username or Password"
-  		render "login"
+  		redirect_to :login
   	end
   end
+
+	def logout
+		session[:user_id] = nil
+		redirect_to root_path
+	end
 
   def home
   end
