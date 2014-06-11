@@ -24,7 +24,7 @@
         <td><%= product.price_in_cents %></td>
         <td><%= product.quantity %></td>
         <td><%= product.description %></td>
-        <td><%= product.category %></td>
+        <td><%= product.category.name %></td>
         <td><%= product.featured %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>

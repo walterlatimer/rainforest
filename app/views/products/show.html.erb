@@ -5,7 +5,7 @@
   <%= @product.name %>
 </p>
 
-<!-- Displaying photo (size can be changed) -->
+<!-- Displaying photo (size can be) -->
 <%= image_tag @product.photo.url(:medium) %>
 
 <p>
@@ -25,7 +25,7 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @product.category %>
+  <%= @product.category.name %>
 </p>
 
 <p>
