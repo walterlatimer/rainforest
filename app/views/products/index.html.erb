@@ -3,6 +3,8 @@
 <table>
   <thead>
     <tr>
+      <!-- Added "Product" -->
+      <th>Product</th>
       <th>Name</th>
       <th>Price in cents</th>
       <th>Quantity</th>
@@ -16,6 +18,8 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+        <!-- Added image thumb in index -->
+        <td><%= image_tag product.photo.url(:thumb) %></td>
         <td><%= product.name %></td>
         <td><%= product.price_in_cents %></td>
         <td><%= product.quantity %></td>
