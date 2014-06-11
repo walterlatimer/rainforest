@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'products#index'
 
+  resources :carts
+  
   resources :photos
 
   resources :reviews
