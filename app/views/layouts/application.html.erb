@@ -11,6 +11,8 @@
 <% if @user %>
 	Hi, <%= @user.display %>! | 
 	<%= link_to 'Logout', logout_path %>
+<% else %>
+
 <% end %>
 
 <%= yield %>
