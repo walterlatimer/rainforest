@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def login
-  	if session[:user_id]
+  	if @user
   		redirect_to root_path
   	end
   end
