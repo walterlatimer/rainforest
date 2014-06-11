@@ -28,6 +28,23 @@ ActiveRecord::Schema.define(version: 20140611161040) do
     t.datetime "updated_at"
   end
 
+  create_table "items", force: true do |t|
+    t.text     "content"
+    t.boolean  "status"
+    t.integer  "list_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items", ["list_id"], name: "index_items_on_list_id", using: :btree
+
+  create_table "lists", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "photos", force: true do |t|
     t.string   "url"
     t.integer  "product_id"
@@ -67,9 +84,9 @@ ActiveRecord::Schema.define(version: 20140611161040) do
   add_index "reviews", ["product_id"], name: "index_reviews_on_product_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
-  create_table "things", force: true do |t|
-    t.string   "goal"
-    t.string   "details"
+  create_table "todolists", force: true do |t|
+    t.string   "task"
+    t.boolean  "completed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
