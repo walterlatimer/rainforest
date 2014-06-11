@@ -1,7 +1,7 @@
 class CreateCarts < ActiveRecord::Migration
   def change
     create_table :carts do |t|
-      t.reference :user
+      t.references :user
 
       t.timestamps
     end
