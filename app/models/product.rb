@@ -26,7 +26,7 @@ class Product < ActiveRecord::Base
 	validates :featured,       :inclusion => {:in => [true, false]}
 
 	def self.search(search)
-	  where("name LIKE ?", "%#{search}")
+	  where("name ILIKE ?", "%#{search}")
 	end
 
 	def formatted_price
