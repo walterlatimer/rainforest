@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+function displayPage() {
+	$('main').hide().delay(200).fadeIn(300)
+}
+$(document).ready(function() {
+	displayPage();
+});

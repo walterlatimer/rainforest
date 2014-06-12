@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   get "reviews", to: "reviews#list_all"
 
+
   resources :carts
   
   resources :photos

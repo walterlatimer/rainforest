@@ -26,7 +26,7 @@
         <% if @user && @user.access >= 3 %>
         <li class="nav-link more"><a href="javascript:void(0)">Admin</a>
         	<ul class="submenu">
-        		<li><%= link_to 'Products Admin', 'products/admin' %></li>
+        		<li><%= link_to 'Products Admin', products_admin_path %></li>
     		</ul>
 		</li>
 		<% end %>
@@ -35,6 +35,18 @@
       </ul>
     </nav>
     <div class="navigation-tools">
+      <div class="search-bar">
+        <div class="search-and-submit">
+					<%= form_tag '/search' do %>
+					  <%= search_field_tag :query %> 
+					  <%= submit_tag("Search") %>
+					<% end %>
+<!--           <input type="search" placeholder="Enter Search" />
+          <button type="submit">
+            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="">
+          </button> -->
+        </div>
+      </div>
 	    <% if @user %>
 			<%= link_to "Hi, #{@user.display}. Logout", logout_path, class: "sign-up" %>
 		<% else %>
