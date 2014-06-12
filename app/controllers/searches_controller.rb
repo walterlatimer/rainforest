@@ -17,7 +17,7 @@ class SearchesController < ApplicationController
 		else
 		end
 
-		unless @results.any?
+		if @results.empty?
 			# Can be used later to show an empty results message
 		end
 	end
