@@ -3,8 +3,25 @@ class ProductsController < ApplicationController
 
   # GET /products
   # GET /products.json
+  # Sorting prefrence for listing products based on session
   def index
-    @products = Product.all
+        @products = case session[:sort_prefrence]
+        when :high_to_low
+          Product.order(price_in_cents: :desc)
+        when :low_to_high
+          Product.order(:price_in_cents)
+        when :newest
+          Product.order(:created_at)
+        # when :rating
+        #   Product.order(:rating)
+         else
+          Product.all
+        end
+  end
+
+  def order_by
+    session[:sort_prefrence] = params[:preference]
+    redirect_to @products
   end
 
   # GET /products/1

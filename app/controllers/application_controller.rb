@@ -11,4 +11,5 @@ class ApplicationController < ActionController::Base
 			@user = nil
 		end
 	end
+
 end
