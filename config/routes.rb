@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get "products/all", to: "products#all"
   get "products/admin", to: "products#admin"
 
+  get "reviews", to: "reviews#list_all"
+
   resources :carts
   
   resources :photos
