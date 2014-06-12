@@ -39,23 +39,19 @@
     <%= review.comment %>
     <br>
     <i>Added by 
-
-    <% if @current_user.nil? %>
-      Guest
-
-    <% else %>
-      <%= @current_user.username.capitalize %>
-
-    <% end %>
+    <%= review.user.display %>
 
      on <%= review.created_at.strftime("%m/%d/%Y") %>.</i>
   </p>
 <% end %>
 
 <hr><br />
+
+<% if @current_user %>
 <h3>What did you think of <%= @product.name.capitalize %>?</h3>
 
-<%= render 'reviews/form' %>
+  <%= render 'reviews/form' %>
+<% end %>
 
 <p>
 <%= link_to 'Edit', edit_product_path(@product) %> |

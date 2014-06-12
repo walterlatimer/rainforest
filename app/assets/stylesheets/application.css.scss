@@ -3,6 +3,7 @@
 @import 'neat';
 @import 'refills/_navigation';
 @import 'refills/_modal';
+@import 'refills/_comment';
 
 body {
 	margin: 0;
@@ -31,11 +32,11 @@ main {
 }
 .product-module {
 	@include span-columns(3);
-	@include omega(4);
+	@include omega(4n);
 	text-align: center;
 	padding: 10px;
 	&:hover {
-		background-color: $pink;
+		background-color: $light-gray;
 	}
 }
 main footer {
