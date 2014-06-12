@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get "products/all", to: "products#all"
   get "products/admin", to: "products#admin"
   get "add_cart", to: "carts#add_to_cart"
+  get "register", to: "users#new"
 
 
 

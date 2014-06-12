@@ -1,3 +1,4 @@
+<section class="login-form">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
       <% @user.errors.full_messages.each do |message| %>
@@ -14,22 +15,20 @@
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label 'Confirm:' %>
+    <%= f.label 'Confirm' %>
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
-    <%= f.label :display %><br>
+    <%= f.label 'Display Name' %><br>
     <%= f.text_field :display %>
   </div>
   <div class="field">
     <%= f.label :avatar_url %><br>
     <%= f.text_field :avatar_url %>
   </div>
-  <div class="field">
-    <%= f.label :access %><br>
-    <%= f.number_field :access %>
-  </div>
+    <%= f.hidden_field :access, value: 1 %>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</section>
