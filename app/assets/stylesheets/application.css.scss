@@ -31,8 +31,11 @@ body > header {
 	@include flash($error-color)
 }
 .product-module {
-	@include span-columns(3);
+	@include span-columns(4);
 	text-align: center;
+	img {
+		max-width: 100%;
+	}
 }
 main footer {
 	@include span-columns(12);

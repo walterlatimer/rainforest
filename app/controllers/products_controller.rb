@@ -9,6 +9,9 @@ class ProductsController < ApplicationController
 	end
 
 	def admin
+		unless @user && @user.access >= 3
+			redirect_to products_path 
+		end
 		@products = Product.all
 	end
 

@@ -33,25 +33,6 @@
   <%= @product.featured %>
 </p>
 
-<p>
-<%= link_to "Add to cart", add_cart_path(@product.id, quantity: 1) %>
-</p>
-
-<p>
-
-<%= form_tag(add_cart_path(@product.id), method: "get") do %>
-Add 
-
-<%= text_field_tag :quantity %>
-<%= @product.name %>
-
-to cart? 
-
-<%= submit_tag "Add" %>
-<% end%>
-
-</p>
-
 
 
 

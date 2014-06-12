@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get "setting", to: "sessions#setting"
 
   get "products/all", to: "products#all"
+  get "products/admin", to: "products#admin"
 
   resources :carts
   
