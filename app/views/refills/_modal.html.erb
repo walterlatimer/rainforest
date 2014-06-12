@@ -1,15 +1,4 @@
-<h1>All Products</h1>
-
-    
-<!-- Sorting by session sort preference -->
-<% @products.each do |product| %>
-  <article class="product-module">
-  <p><%= image_tag product.photo.url(:medium) %></p>
-  <p>
-    <strong><%= link_to product.name, product %></strong><br />
-    $<%= product.formatted_price %>
-  </p>
-  <div class="modal">
+<div class="modal">
   <label for="modal-1">
     <div class="btn js-btn">Click for Modal</div>
   </label>
@@ -23,5 +12,3 @@
     </div>
   </div>
 </div>
-  </article>
-<% end %>
