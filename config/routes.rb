@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   get "home", to: "sessions#home"
   get "profile", to: "sessions#profile"
   get "setting", to: "sessions#setting"
-  post "search", to: "products#search"
+  get "search", to: "products#search"
+
   get "products/all", to: "products#all"
   get "products/admin", to: "products#admin"
   get "add_cart", to: "carts#add_to_cart"
