@@ -30,7 +30,7 @@
   <div class="field">
     <%= f.label :category_id %><br>
     <!-- Added dropdown select for categories -->
-    <%= f.collection_select :category_id, Category.order(:name),:id,:id, include_blank: false %>
+    <%= f.collection_select :category_id, Category.order(:name),:id,:name, include_blank: false %>
   </div>
   <div class="field">
     <%= f.label :featured %><br>
