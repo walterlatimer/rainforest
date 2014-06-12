@@ -1,46 +1,31 @@
-class CartController < ApplicationController
-
-  before_action :find_or_create_cart, :except => [:list]
-
-  def list
-    @products = Product.all
-  end
-
-
-# ================= STEPS TO CREATE A CART =================
-
-# Since the cart's contents don't save between pages, we need a way 
-# to capture the contents between redirects.
-
-# 1. Create a cart and assign it to a session variable. (find_or_create_cart)
-# 2. Add things to that cart. (add_to_cart)
-# 3. After we redirect to our show_cart page, the show_cart is 
-#    also finding the same cart.
-
-# The cart's contents are stored in the session.
-# Rails stores session files in tmp/sessions. We can delete sessions that are too old. 
+class CartsController < ApplicationController
 
   def add_to_cart
-    product = Product.find(params[:id])
-    @cart.add_product(product)
-    redirect_to(:action => 'show_cart')
-  end
 
+    # Get current quantity of current product you're viewing.
+    # @cart = {id: quantity}. So @cart[params[:id]] will return quantity
+    # of item at i'th id.
 
-  def show_cart
+    current_quantity = @cart.@product.id || 0
 
-  end
-
-
-  # It's tedious to instantiate the cart every time we want to refer to it
-  # For that reason we'll use a private method that either finds the cart, or creates
-  # a new one. 
-  
-  private # ---------------------------------------------------
-
-  def find_or_create_cart
-    @cart = session[:cart] ||= Cart.new
+    # Add the user's updated quantity to the cart. 
+    new_quantity = params[:quantity].to_i + current_quantity
+    
+    # Update session cart to show new quantity.
+    @cart[product.id] = quantity + current_quantity
   end
 
 end
+
+
+
+
+
+# x = {a: 1, b: 2}
+
+# x[:a]
+
+# session[:cart] = {4: 5, 73: 1}
+# session[:cart][:4] = 5
+# {id: quantity}
 
