@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 	# Sorting prefrence for listing products based on session
 	def index
 		@products = Product.where(featured: true)
+		
 	end
 
 	def admin
@@ -38,7 +39,9 @@ class ProductsController < ApplicationController
 	# GET /products/1
 	# GET /products/1.json
 	def show
+		@review = Review.new
 	end
+	
 
 	# GET /products/new
 	def new
