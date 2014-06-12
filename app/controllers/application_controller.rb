@@ -12,11 +12,8 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-<<<<<<< HEAD
-=======
 	def get_cart
 		session[:cart] ||= []
 		@cart = session[:cart]
 	end
->>>>>>> 3f181dc277c766e6cbb66b2ab9061d804fdbe0ec
 end
