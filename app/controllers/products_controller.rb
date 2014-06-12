@@ -6,11 +6,7 @@ class ProductsController < ApplicationController
 	# Sorting prefrence for listing products based on session
 	def index
 		@products = Product.where(featured: true)
-<<<<<<< HEAD
 		@include_header = true
-		
-=======
->>>>>>> 100bd1c95b1b633b706c8f9b52eb8e8d0095f2ac
 	end
 
 	def admin
