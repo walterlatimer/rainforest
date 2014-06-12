@@ -23,7 +23,7 @@
 				<li><%= link_to category.name, category_path(category) %></li>
 			<% end %>
 			</ul>
-        <% if @user && @user.access >= 3 %>
+        <% if @current_user && @current_user.access >= 3 %>
         <li class="nav-link more"><a href="javascript:void(0)">Admin</a>
         	<ul class="submenu">
         		<li><%= link_to 'Products Admin', products_admin_path %></li>
@@ -47,8 +47,8 @@
           </button> -->
         </div>
       </div>
-	    <% if @user %>
-			<%= link_to "Hi, #{@user.display}. Logout", logout_path, class: "sign-up" %>
+	    <% if @current_user %>
+			<%= link_to "Hi, #{@current_user.display}. Logout", logout_path, class: "sign-up" %>
 		<% else %>
 			<%= link_to 'Log In', login_path, class: "sign-up" %>
 		<% end %>

@@ -31,7 +31,7 @@ main {
 }
 .product-module {
 	@include span-columns(3);
-	@include omega(4n);
+	@include omega(4);
 	text-align: center;
 	padding: 10px;
 	&:hover {
