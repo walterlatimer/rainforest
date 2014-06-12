@@ -1,3 +1,42 @@
 @import 'bourbon';
 @import 'base/base';
 @import 'neat';
+@import 'refills/_navigation';
+
+body {
+	margin: 0;
+	padding: 0;
+}
+main {
+	@include outer-container;
+}
+body > header {
+
+}
+@mixin flash($color) {
+	background-color: $color;
+	color: white;
+	font-weight: bold;
+	@include span-columns(8);
+	@include shift(2);
+	padding: 5px;
+	font-size: .75em;
+	text-align: center;
+}
+.success {
+	@include flash($success-color)
+}
+
+.error {
+	@include flash($error-color)
+}
+
+
+
+
+
+
+
+
+
+

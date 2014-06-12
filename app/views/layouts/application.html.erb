@@ -8,14 +8,66 @@
 </head>
 <body>
 
-<% if @user %>
-	Hi, <%= @user.display %>! | 
-	<%= link_to 'Logout', logout_path %>
-<% else %>
+<header class="navigation">
+  <div class="menu-wrapper">
 
-<% end %>
+    <p class="navigation-menu-button" id="js-mobile-menu">MENU</p>
+    <nav>
+      <ul id="navigation-menu">
+        <li class="nav-link"><%= link_to 'Products', products_path %></li>
+        <li class="nav-link"><%= link_to 'Users', users_path %></li>
+        <li class="nav-link"><%= link_to 'Photos', photos_path %></li>
+        <li class="nav-link more"><a href="javascript:void(0)">Categories</a>
+          <ul class="submenu">
+          	<%= @categories.each do |category| %>
+          	<li><%= link_to category.name, category_path(category) %></li>
+          	<% end %>
+          </ul>
+        </li>
+        
+      </ul>
+    </nav>
+    <div class="navigation-tools">
+	    <% if @user %>
+			<%= link_to "Hi, #{@user.display}. Logout", logout_path, class: "sign-up" %>
+		<% else %>
+			<%= link_to 'Log In', login_path, class: "sign-up" %>
+		<% end %>
+    </div>
+  </div>
+</header>
+
+<script>
+  $(function() {
+    var menu = $('#navigation-menu');
+    var menuToggle = $('#js-mobile-menu');
+    var signUp = $('.sign-up');
+
+    $(menuToggle).on('click', function(e) {
+      e.preventDefault();
+      menu.slideToggle(function(){
+        if(menu.is(':hidden')) {
+          menu.removeAttr('style');
+        }
+      });
+    });
+
+    // underline under the active nav item
+    $(".nav .nav-link").click(function() {
+      $(".nav .nav-link").each(function() {
+        $(this).removeClass("active-nav-item");
+      });
+      $(this).addClass("active-nav-item"); 
+      $(".nav .more").removeClass("active-nav-item");
+    });
+  });
+</script>
+
+<main>
 
 <%= yield %>
+
+</main>
 
 </body>
 </html>
