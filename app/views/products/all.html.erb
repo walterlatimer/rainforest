@@ -6,7 +6,7 @@
   <article class="product-module">
   <p><%= image_tag product.photo.url(:medium) %></p>
   <p>
-    <strong><%= link_to product.name, product %></strong><br />
+    <strong><%= link_to product.name.truncate(25), product %></strong><br />
     $<%= product.formatted_price %>
   </p>
   <div class="modal">

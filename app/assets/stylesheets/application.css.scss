@@ -31,8 +31,12 @@ main {
 }
 .product-module {
 	@include span-columns(3);
-	@include omega(5n);
+	@include omega(4n);
 	text-align: center;
+	padding: 10px;
+	&:hover {
+		background-color: $pink;
+	}
 }
 main footer {
 	@include span-columns(12);
@@ -48,6 +52,9 @@ main footer {
 }
 tbody tr:hover {
 	background-color: darken(white, 5);
+}
+main > h1 {
+	padding: 20px 0;
 }
 
 
