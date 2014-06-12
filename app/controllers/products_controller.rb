@@ -6,7 +6,9 @@ class ProductsController < ApplicationController
 	# Sorting prefrence for listing products based on session
 	def index
 		@products = Product.where(featured: true)
-		
+
+	 	 @projects = Project.search(params[:search])
+	end
 	end
 
 	def admin
