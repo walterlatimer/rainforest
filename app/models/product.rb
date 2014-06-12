@@ -1,7 +1,8 @@
 class Product < ActiveRecord::Base
 	# before_save :default_values
 	belongs_to :category
-	# has_many :photos, :reviews
+	# has_many :photos,
+	has_many :reviews
 
 	# Validation and handling of photos (here is where sizes and defult photo can be set)
 	has_attached_file :photo, styles: {

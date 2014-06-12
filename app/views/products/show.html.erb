@@ -1,16 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @product.name %>
+  <h1><%= @product.name %></h1>
 </p>
 
 <!-- Displaying photo (size can be) -->
 <%= image_tag @product.photo.url(:medium) %>
 
 <p>
-  <strong>Price in cents:</strong>
-  <%= @product.price_in_cents %>
+  <strong>Price:</strong>
+  <%= @product.formatted_price %>
 </p>
 
 <p>
@@ -19,60 +18,34 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
   <strong>Category:</strong>
   <%= @product.category.name %>
 </p>
 
 <p>
-  <strong>Featured:</strong>
-  <%= @product.featured %>
+  <strong>About:</strong>
+  <%= @product.description %>
 </p>
 
 
-<h4>Reviews</h4>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Comment</th>
-      <th>Rating</th>
-      <th>Product</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<hr><br />
 
-  <tbody>
+<h3>Reviews</h3>
 
-    <% if @reviews %>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td><%= review.title %></td>
-        <td><%= review.comment %></td>
-        <td><%= review.rating %></td>
-        <td><%= review.product %></td>
-        <td><%= review.user %></td>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-    <% end %>
-  </tbody>
-</table>
+<% @product.reviews.each do |review| %>
+  <p>
+    <h5><%= review.title %></h5>
+    <%= review.comment %>
+    <br>
+    Added on: <%= review.created_at %>
+  </p>
+<% end %>
 
-<br>
+<hr><br />
+<h3>What did you think of <%= @product.name.capitalize %>?</h3>
 
-<p>
-<%= link_to 'New Review', new_review_path %>
-</p>
-
+<%= render 'reviews/form' %>
 
 <p>
 <%= link_to 'Edit', edit_product_path(@product) %> |

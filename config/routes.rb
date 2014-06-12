@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'sessions/login'
 
   get 'sessions/home'
@@ -22,8 +23,8 @@ Rails.application.routes.draw do
 
   get "products/all", to: "products#all"
   get "products/admin", to: "products#admin"
+  get "add_cart", to: "carts#add_to_cart"
 
-  get "reviews", to: "reviews#list_all"
 
 
   resources :carts
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  #this puts the reviews directory as subdirectory of products
   resources :products do
     resources :reviews
     resources :photos
