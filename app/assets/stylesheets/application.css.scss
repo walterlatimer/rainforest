@@ -2,42 +2,49 @@
 @import 'base/base';
 @import 'neat';
 @import 'refills/_navigation';
+@import 'refills/_modal';
 
 body {
 	margin: 0;
-	padding: 0;
 }
 main {
 	@include outer-container;
-}
-body > header {
-
+	padding: 0 $gutter;
 }
 @mixin flash($color) {
+	@include span-columns(8);
+	@include shift(2);
+	@include omega();
 	background-color: $color;
 	color: white;
 	font-weight: bold;
-	@include span-columns(8);
-	@include shift(2);
 	padding: 5px;
 	font-size: .75em;
 	text-align: center;
 }
 .success {
-	@include flash($success-color)
+	@include flash($success-color);
 }
 
 .error {
-	@include flash($error-color)
+	@include flash($error-color);
 }
 .product-module {
-	@include span-columns(4);
+	@include span-columns(3);
+	@include omega(5n);
 	text-align: center;
-	@include omega(3);
 }
 main footer {
 	@include span-columns(12);
 	text-align: center;
+}
+.login-form {
+	@include span-columns(4);
+	@include shift(4);
+	@include omega();
+}
+::selection {
+	background-color: $pink;
 }
 
 
