@@ -4,13 +4,14 @@
 @import 'refills/_navigation';
 @import 'refills/_modal';
 @import 'refills/_comment';
+@import 'refills/_image-gradient';
 
 body {
 	margin: 0;
 }
 main {
 	@include outer-container;
-	padding: 0 $gutter;
+	padding: 60px $gutter;
 }
 @mixin flash($color) {
 	@include span-columns(8);
@@ -49,7 +50,7 @@ main footer {
 	@include omega();
 }
 ::selection {
-	background-color: $orange;
+	background-color: $pink;
 }
 tbody tr:hover {
 	background-color: darken(white, 5);

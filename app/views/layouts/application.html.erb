@@ -38,7 +38,7 @@
         <div class="search-and-submit">
 					<%= form_tag '/search' do %>
 					  <%= search_field_tag :query %> 
-					  <%= submit_tag("Search") %>
+<!-- 					  <%= submit_tag("Search") %> -->
 					<% end %>
 <!--           <input type="search" placeholder="Enter Search" />
           <button type="submit">
@@ -54,6 +54,16 @@
     </div>
   </div>
 </header>
+
+<% if @include_header %>
+ <section class="image-gradient">
+    <div class="copy">
+    <p>Rainforest</p>
+    </div>
+    <div class="overlay"></div>
+  </section>
+<% end %>
+
 
 <script>
   $(function() {

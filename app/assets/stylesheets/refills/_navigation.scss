@@ -1,6 +1,8 @@
 header.navigation {
+  position: fixed;
+  z-index: 999;
   $navigation-padding: 1em;
-  $navigation-background: $dark-gray;
+  $navigation-background: darken($teal, 15);
   $navigation-color: transparentize(white, 0.3);
   $navigation-color-hover: white;
   $navigation-height: 60px;

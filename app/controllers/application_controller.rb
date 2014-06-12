@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 	before_action :get_user, :get_cart, :get_categories
 
+	@include_header = false
+
 	def get_user
 		if session[:user_id]
 			@current_user = User.find(session[:user_id])

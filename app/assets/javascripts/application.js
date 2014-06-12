@@ -16,6 +16,8 @@
 //= require_tree .
 
 
+
+
 function displayPage() {
 	$('main').hide().delay(200).fadeIn(300)
 }

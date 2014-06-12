@@ -34,18 +34,22 @@
 <h3>Reviews</h3>
 
 <% @product.reviews.each do |review| %>
-  <p>
-    <h5><%= review.title %></h5>
-    <%= review.comment %>
-    <br>
-    <i>Added by 
-    <%= review.user.display %>
 
-     on <%= review.created_at.strftime("%m/%d/%Y") %>.</i>
-  </p>
+
+<div class="comment">
+  <div class="comment-image">
+    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="">
+  </div>
+  <div class="comment-content">
+    <h1><%= review.title %></h1>
+    <p><%= review.comment %></p>
+    <p class="comment-detail">
+      Added by <%= review.user.display %> on <%= review.created_at.strftime("%m/%d/%Y") %>.
+    </p>
+  </div>
+</div>
 <% end %>
 
-<hr><br />
 
 <% if @current_user %>
 <h3>What did you think of <%= @product.name.capitalize %>?</h3>
