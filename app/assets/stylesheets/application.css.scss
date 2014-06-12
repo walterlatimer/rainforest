@@ -33,9 +33,7 @@ body > header {
 .product-module {
 	@include span-columns(4);
 	text-align: center;
-	img {
-		max-width: 100%;
-	}
+	@include omega(3);
 }
 main footer {
 	@include span-columns(12);
