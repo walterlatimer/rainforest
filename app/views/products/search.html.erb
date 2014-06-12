@@ -1,0 +1,25 @@
+<h3>Search Results</h3>
+
+<% @products.each do |product| %>
+	<article class="product-module">
+		<p><%= image_tag product.photo.url(:medium) %></p>
+		<p>
+			<strong><%= link_to product.name.truncate(20), product %></strong><br />
+			$<%= product.formatted_price %>
+		</p>
+		<div class="modal">
+			<label for="modal-1">
+				<div class="btn js-btn">Quick View</div>
+			</label>
+			<input class="modal-state" id="modal-1" type="checkbox" />
+			<div class="modal-window">
+				<div class="modal-inner">
+					<label class="modal-close" for="modal-1"></label>
+					<h1><%= product.name %></h1>
+					<%= image_tag product.photo.url(:medium) %>
+					<p class="body"><%= product.description %></p>
+				</div>
+			</div>
+		</div>
+	</article>
+<% end %>

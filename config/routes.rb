@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "home", to: "sessions#home"
   get "profile", to: "sessions#profile"
   get "setting", to: "sessions#setting"
+  get "search", to: "products#search"
 
   get "products/all", to: "products#all"
   get "products/admin", to: "products#admin"
@@ -36,7 +37,9 @@ Rails.application.routes.draw do
   resources :users do
     resources :reviews
   end
-
+  resources :products do
+    resources :search
+  end
   #this puts the reviews directory as subdirectory of products
   resources :products do
     resources :reviews
