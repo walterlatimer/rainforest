@@ -37,7 +37,7 @@
       <div class="search-bar">
         <div class="search-and-submit">
           <%= form_tag(search_path, :method => 'get', id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+          <%= search_field_tag :search, params[:search], placeholder: "Search Products" %>
           <% submit_tag "Search", :name => nil %>
           <% end %>
         </div>
@@ -92,6 +92,7 @@
 <%= yield %>
 
 </main>
+
 
 </body>
 </html>

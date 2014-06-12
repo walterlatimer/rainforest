@@ -36,8 +36,9 @@ main {
 	@include omega(4n);
 	text-align: center;
 	padding: 10px;
-	&:hover {
-		background-color: $light-gray;
+	&:hover img {
+		@include transform(scale(1.1));
+		@include transition (all 0.2s);
 	}
 }
 main footer {
@@ -58,7 +59,32 @@ tbody tr:hover {
 main > h1 {
 	padding: 20px 0;
 }
-
+header.navigation .search-bar .search-and-submit input[type=search] {
+	position: relative;
+	top: -1px;
+	height: 32px;
+	background-color: $dark-gray;
+}
+.product-detail {
+	@include span-columns(12);
+	h1 {
+		@include span-columns(10);
+		@include shift(2);
+		padding: 30px 0;
+	}
+	img {
+		@include span-columns(3);
+		@include shift(2);
+	}
+	.details {
+		@include span-columns(5);
+	}
+}
+.review-module {
+  @include span-columns(8);
+  @include shift(2);
+  padding-top: 40px;
+}
 
 
 
