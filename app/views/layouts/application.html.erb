@@ -37,10 +37,10 @@
     <div class="navigation-tools">
       <div class="search-bar">
         <div class="search-and-submit">
-					<%= form_tag '/search' do %>
-					  <%= search_field_tag :query, params[:search] %> 
-					  <%= submit_tag "Search", :name => nil %>
-					<% end %>
+					<%= form_tag(products_path, :method => 'get', id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+          <% submit_tag "Search", :name => nil %>
+          <% end %>
 <!--           <input type="search" placeholder="Enter Search" />
           <button type="submit">
             <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="">

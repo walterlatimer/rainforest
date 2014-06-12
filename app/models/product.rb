@@ -24,13 +24,8 @@ class Product < ActiveRecord::Base
 	validates :description,    presence: true
 	validates :category,       presence: true
 	validates :featured,       :inclusion => {:in => [true, false]}
-
 	def self.search(search)
-	  if search
-	    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-	  else
-	    find(:all)
-	  end
+	  where("name like ?", "%#{search}")
 	end
 
 	def formatted_price

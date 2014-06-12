@@ -6,9 +6,6 @@ class ProductsController < ApplicationController
 	# Sorting prefrence for listing products based on session
 	def index
 		@products = Product.where(featured: true)
-
-	 	 @projects = Project.search(params[:search])
-	end
 	end
 
 	def admin
@@ -30,6 +27,14 @@ class ProductsController < ApplicationController
 		#   Product.order(:rating)
 		 else
 			Product.order(:created_at)
+		end
+	end
+
+	def search
+		if params[:search]
+			@products = Product.search(params[:search]).order("created_at DESC")
+		else
+			@products = Product.all.oder('created_at DESC')
 		end
 	end
 
