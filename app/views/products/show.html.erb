@@ -38,7 +38,17 @@
     <h5><%= review.title %></h5>
     <%= review.comment %>
     <br>
-    Added on: <%= review.created_at %>
+    <i>Added by 
+
+    <% if @current_user.nil? %>
+      Guest
+
+    <% else %>
+      <%= @current_user.username.capitalize %>
+
+    <% end %>
+
+     on <%= review.created_at.strftime("%m/%d/%Y") %>.</i>
   </p>
 <% end %>
 
