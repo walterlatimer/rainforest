@@ -44,7 +44,10 @@ main footer {
 	@include omega();
 }
 ::selection {
-	background-color: $pink;
+	background-color: $orange;
+}
+tbody tr:hover {
+	background-color: darken(white, 5);
 }
 
 
