@@ -1,5 +1,6 @@
-<h1>Featured Products</h1>
+<h1>All Products</h1>
 
+    
 <!-- Sorting by session sort preference -->
 <% @products.each do |product| %>
   <article class="product-module">
@@ -10,5 +11,3 @@
   </p>
   </article>
 <% end %>
-
-<footer><%= link_to 'View All Products', 'products/all', class: "button" %></footer>

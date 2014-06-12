@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get "profile", to: "sessions#profile"
   get "setting", to: "sessions#setting"
 
+  get "products/all", to: "products#all"
+
   resources :carts
   
   resources :photos
@@ -35,7 +37,9 @@ Rails.application.routes.draw do
     resources :photos
   end
 
-  resources :categories
+  resources :categories do
+    resources :products
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

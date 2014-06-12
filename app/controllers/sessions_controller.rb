@@ -9,11 +9,9 @@ class SessionsController < ApplicationController
   	authorized_user = User.authenticate(params[:username],params[:login_password])
   	if authorized_user
   		session[:user_id] = authorized_user.id
-  		flash[:success] = "Welcome back.  You are now logged in as #{authorized_user.username}"
-  		redirect_to root_path
+  		redirect_to root_path, success: "Welcome back.  You are now logged in as #{authorized_user.username}"
   	else
-  		flash[:error] = "Invalid Username or Password"
-  		redirect_to :login
+  		redirect_to :login, error: "Invalid Username or Password"
   	end
   end
 

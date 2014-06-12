@@ -1,91 +1,99 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+	before_action :set_product, only: [:show, :edit, :update, :destroy]
 
-  # GET /products
-  # GET /products.json
-  # Sorting prefrence for listing products based on session
-  def index
-        @products = case session[:sort_prefrence]
-        when :high_to_low
-          Product.order(price_in_cents: :desc)
-        when :low_to_high
-          Product.order(:price_in_cents)
-        when :newest
-          Product.order(:created_at)
-        # when :rating
-        #   Product.order(:rating)
-         else
-          Product.all
-        end
-  end
+	# GET /products
+	# GET /products.json
+	# Sorting prefrence for listing products based on session
+	def index
+		@products = Product.where(featured: true)
+	end
 
-  def order_by
-    session[:sort_prefrence] = params[:preference]
-    redirect_to @products
-  end
+	def admin
+		@products = Product.all
+	end
 
-  # GET /products/1
-  # GET /products/1.json
-  def show
-  end
+	def all
+		@products = case session[:sort_prefrence]
+		when :high_to_low
+			Product.order(price_in_cents: :desc)
+		when :low_to_high
+			Product.order(:price_in_cents)
+		when :newest
+			Product.order(:created_at)
+		# when :rating
+		#   Product.order(:rating)
+		 else
+			Product.all
+		end
+	end
 
-  # GET /products/new
-  def new
-    @product = Product.new
-  end
+	def order_by
+		session[:sort_prefrence] = params[:preference]
+		redirect_to @products
+	end
 
-  # GET /products/1/edit
-  def edit
-  end
+	# GET /products/1
+	# GET /products/1.json
+	def show
+	end
 
-  # POST /products
-  # POST /products.json
-  def create
-    @product = Product.new(product_params)
+	# GET /products/new
+	def new
+		@product = Product.new
+	end
 
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+	# GET /products/1/edit
+	def edit
+	end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
-  def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+	# POST /products
+	# POST /products.json
+	def create
+		@product = Product.new(product_params)
 
-  # DELETE /products/1
-  # DELETE /products/1.json
-  def destroy
-    @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+		respond_to do |format|
+			if @product.save
+				format.html { redirect_to @product, success: 'Product was successfully created.' }
+				format.json { render :show, status: :created, location: @product }
+			else
+				format.html { render :new }
+				format.json { render json: @product.errors, status: :unprocessable_entity }
+			end
+		end
+	end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
+	# PATCH/PUT /products/1
+	# PATCH/PUT /products/1.json
+	def update
+		respond_to do |format|
+			if @product.update(product_params)
+				format.html { redirect_to @product, success: 'Product was successfully updated.' }
+				format.json { render :show, status: :ok, location: @product }
+			else
+				format.html { render :edit }
+				format.json { render json: @product.errors, status: :unprocessable_entity }
+			end
+		end
+	end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params # Added a permit for :photo - Frank
-      params.require(:product).permit(:name, :price_in_cents, :quantity, :description, :category_id, :photo, :featured)
-    end
+	# DELETE /products/1
+	# DELETE /products/1.json
+	def destroy
+		@product.destroy
+		respond_to do |format|
+			format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+			format.json { head :no_content }
+		end
+	end
+
+	private
+	# Use callbacks to share common setup or constraints between actions.
+	def set_product
+		@product = Product.find(params[:id])
+	end
+
+	# Never trust parameters from the scary internet, only allow the white list through.
+	def product_params # Added a permit for :photo - Frank
+		params.require(:product).permit(:name, :price_in_cents, :quantity, :description, :category_id, :photo, :featured)
+	end
 end

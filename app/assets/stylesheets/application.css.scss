@@ -30,6 +30,14 @@ body > header {
 .error {
 	@include flash($error-color)
 }
+.product-module {
+	@include span-columns(3);
+	text-align: center;
+}
+main footer {
+	@include span-columns(12);
+	text-align: center;
+}
 
 
 

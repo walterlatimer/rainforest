@@ -20,14 +20,14 @@ class Product < ActiveRecord::Base
 	validates :category,       presence: true
 	validates :featured,       :inclusion => {:in => [true, false]}
 
-	private
-	def default_values
-		self.featured ||= false
-	end
-
 	def formatted_price
 		price_in_dollars = price_in_cents.to_f / 100
 		sprintf("%.2f", price_in_dollars)
+	end
+
+	private
+	def default_values
+		self.featured ||= false
 	end
 
 end

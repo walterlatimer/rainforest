@@ -18,6 +18,14 @@ class User < ActiveRecord::Base
 		                     less_than_or_equal_to: 4
 		                   }
 
+	def user_type
+		case access
+		when 1 then "User"
+		when 2 then "Moderator"
+		when 3 then "Admin"
+		end
+	end
+
 	private
 	# Access level is 0 by default
 	def default_values
