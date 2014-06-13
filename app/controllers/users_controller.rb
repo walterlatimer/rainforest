@@ -12,6 +12,13 @@ class UsersController < ApplicationController
 	def show
 	end
 
+	def admin
+		unless @current_user && @current_user.access >= 3
+			redirect_to users_path 
+		end
+		@users = User.all
+	end
+
 	# GET /users/new
 	def new
 		@user = User.new
