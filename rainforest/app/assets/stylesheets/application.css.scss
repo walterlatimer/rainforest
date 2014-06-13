@@ -1,0 +1,150 @@
+@import 'bourbon';
+@import 'base/base';
+@import 'neat';
+@import 'refills/_navigation';
+@import 'refills/_modal';
+@import 'refills/_comment';
+@import 'refills/_image-gradient';
+
+body {
+	margin: 0;
+	background-color: white;
+}
+main {
+	@include outer-container;
+	padding: 60px $gutter;
+}
+@mixin flash($color) {
+	@include span-columns(8);
+	@include shift(2);
+	@include omega();
+	background-color: $color;
+	color: white;
+	font-weight: bold;
+	padding: 5px;
+	font-size: .75em;
+	text-align: center;
+}
+#avatar {
+	width: 40px;
+	display: table;
+	position: relative;
+	top: 7px;
+	img {
+		border-radius: 50%;
+	}
+}
+.success {
+	@include flash($success-color);
+}
+
+.error {
+	@include flash($error-color);
+}
+.product-module {
+	@include span-columns(3);
+	@include omega(4n);
+	text-align: center;
+	padding: 10px;
+	&:hover img {
+		@include transform(scale(1.1));
+		@include transition (all 0.2s);
+	}
+}
+main footer {
+	@include span-columns(12);
+	text-align: center;
+}
+.login-form {
+	@include span-columns(4);
+	@include shift(4);
+	@include omega();
+}
+::selection {
+	background-color: $pink;
+}
+tbody tr:hover {
+	background-color: darken(white, 5);
+}
+main > h1 {
+	padding: 20px 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: darken($teal, 15);
+}
+header.navigation .search-bar .search-and-submit input[type=search] {
+	position: relative;
+	top: -1px;
+	height: 32px;
+	background-color: $dark-gray;
+}
+.product-detail {
+	@include span-columns(12);
+	h1 {
+		@include span-columns(10);
+		@include shift(2);
+		padding: 30px 0;
+	}
+	img {
+		@include span-columns(3);
+		@include shift(2);
+	}
+	.details {
+		@include span-columns(5);
+	}
+}
+.review-module {
+	@include span-columns(8);
+	@include shift(2);
+	padding-top: 40px;
+	h3 {
+		padding: 25px 0;
+	}
+}
+.user-info {
+	@include span-columns(12);
+	text-align: center;
+	padding-top: 40px;
+}
+.user-reviews {
+	@include span-columns(6);
+	@include shift(3);
+	padding-top: 40px;
+	h3 {
+		text-align: center;
+		padding: 20px 0;
+	}
+}
+.register-link {
+	@include span-columns(12);
+	text-align: center;
+	padding-top: 20px;	
+}
+.stock {
+	font-weight: bold;
+}
+.comment-image.product img {
+	border-radius: 0;
+}
+.avatar {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+h1 .avatar {
+	position: relative;
+	top: 13px;
+	margin-right: 10px;
+}
+h1.user {
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
