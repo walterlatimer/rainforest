@@ -1,30 +1,40 @@
-<p class="success"><%= notice %></p>
-
+<h1><%= image_tag @user.photo.url(:thumb), class: "avatar" %><%= @user.username %></h1>
+<% if @current_user == @user %>
 <p>
-  <strong>Username:</strong>
-  <%= @user.username %>
+<%= link_to 'Update my Information', edit_user_path(@user) %>
+</p>
+<% end %>
+<p>
+  <strong>Display Name:</strong>
+  <%= @user.display %><br>
+  <strong>User Type:</strong>
+  <%= @user.user_type %>
 </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
 
-<p>
-  <strong>Display:</strong>
-  <%= @user.display %>
-</p>
+<section class="review-module">
 
-<p>
-  <strong>Avatar:</strong>
-  <br>
-  <%= image_tag @user.photo.url(:medium) %>
-</p>
+<% if @user.reviews.size > 0 %>
+  <h3>Reviews</h3>
+<% else %>
+  <h3>This user hasn't left any reviews (yet).</h3>
+<% end %>
 
-<p>
-  <strong>Access:</strong>
-  <%= @user.access %>
-</p>
+<% @user.reviews.each do |review| %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="comment">
+  <div class="comment-image">
+    <%= image_tag review.product.photo.url(:thumb) %>
+  </div>
+  <div class="comment-content">
+    <h1><%= review.title %></h1>
+    <p><%= review.comment %></p>
+    <p class="comment-detail">
+      Added to <%= link_to review.product.name, product_path(review.product.id) %> on <%= review.created_at.strftime("%m/%d/%Y") %>.
+    </p>
+  </div>
+</div>
+<% end %>
+
+
+</section>

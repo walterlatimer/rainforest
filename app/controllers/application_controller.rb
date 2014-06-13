@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 	@include_header = false
 
 	def get_user
+
 		if session[:user_id]
 			@current_user = User.find(session[:user_id])
 		else
