@@ -5,24 +5,18 @@
   <%= image_tag @product.photo.url(:medium) %>
   <section class="details">
     <p>
-      <strong>Price:</strong>
-      <%= @product.formatted_price %>
+      $<%= @product.formatted_price %>
     </p>
 
-    <p>
-      <strong>Quantity:</strong>
-      <%= @product.quantity %>
+    <p class="stock">
+      <% if @product.quantity > 0 %>
+        Currently in Stock
+      <% else %>
+        Out of Stock
+      <% end %>
     </p>
 
-    <p>
-      <strong>Category:</strong>
-      <%= @product.category.name %>
-    </p>
-
-    <p>
-      <strong>About:</strong>
-      <%= @product.description %>
-    </p>
+    <p><%= @product.description %></p>
   </section>
 </section>
 
@@ -31,6 +25,8 @@
 
 <% if @product.reviews.size > 0 %>
   <h3>Reviews</h3>
+<% else %>
+  <h3>There are no reviews for this product (yet).</h3>
 <% end %>
 
 <% @product.reviews.each do |review| %>
@@ -38,7 +34,7 @@
 
 <div class="comment">
   <div class="comment-image">
-    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="">
+    <img src="http://localhost:3000/system/products/photos/000/000/007/medium/2014_San_Francisco_-_20.jpg?1402554207" alt="">
   </div>
   <div class="comment-content">
     <h1><%= review.title %></h1>
@@ -53,7 +49,7 @@
 
 <% if @current_user %>
 <section class="new-review">
-<h3>What did you think of <%= @product.name.capitalize %>?</h3>
+<h3>What did you think of <%= @product.name %>?</h3>
   <%= render 'reviews/form' %>
 </section>
 <% end %>

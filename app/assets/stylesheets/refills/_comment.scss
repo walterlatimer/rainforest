@@ -9,7 +9,7 @@
 
   display: table;
   width: 100%;
-  margin-bottom: $base-line-height;
+  // margin-bottom: $base-line-height;
   padding-bottom: 1em;
   border-bottom: 1px solid transparentize($comment-color, .9);
 
@@ -26,7 +26,7 @@
       width: $comment-image-width;
       height: auto;
       border-radius: $base-border-radius;
-      padding: $comment-image-padding;
+      // padding-rightdding: $comment-image-padding;
       background: $comment-background;
       display: block;
       max-width: none;
@@ -57,5 +57,9 @@
       color: $comment-detail-color;
     }
   }
+  &:hover {
+    background-color: lighten($orange, 35);
+  }
+  padding: 15px;
 }
 

@@ -8,7 +8,7 @@
 
 body {
 	margin: 0;
-	// background-color: lighten($orange, 25);
+	background-color: white;
 }
 main {
 	@include outer-container;
@@ -25,6 +25,13 @@ main {
 	font-size: .75em;
 	text-align: center;
 }
+#avatar {
+	width: 40px;
+	display: table;
+	position: relative;
+	top: 7px;
+	border-radius: 50%;
+}
 .success {
 	@include flash($success-color);
 }
@@ -34,7 +41,7 @@ main {
 }
 .product-module {
 	@include span-columns(3);
-	@include omega(4n);
+	@include omega(5n);
 	text-align: center;
 	padding: 10px;
 	&:hover img {
@@ -59,6 +66,9 @@ tbody tr:hover {
 }
 main > h1 {
 	padding: 20px 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: darken($teal, 15);
 }
 header.navigation .search-bar .search-and-submit input[type=search] {
 	position: relative;
@@ -85,11 +95,17 @@ header.navigation .search-bar .search-and-submit input[type=search] {
 	@include span-columns(8);
 	@include shift(2);
 	padding-top: 40px;
+	h3 {
+		padding: 25px 0;
+	}
 }
 .register-link {
 	@include span-columns(12);
 	text-align: center;
 	padding-top: 20px;	
+}
+.stock {
+	font-weight: bold;
 }
 
 
