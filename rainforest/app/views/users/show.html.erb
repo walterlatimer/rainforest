@@ -1,4 +1,4 @@
-<h1 class="user"><%= image_tag @user.photo.url(:thumb), class: "avatar" %><%= @user.username %></h1>
+<h1 class="user"><%= image_tag @user.photo.url(:thumb), class: "avatar" %><%= @user.display %></h1>
 <section class="user-info">
 <% if @current_user == @user %>
 <p>
@@ -6,10 +6,12 @@
 </p>
 <% end %>
 <p>
-  <strong>Display Name:</strong>
-  <%= @user.display %><br>
   <strong>User Type:</strong>
   <%= @user.user_type %>
+  <br>
+  <strong>Last Login:</strong>
+  <% t = @user.updated_at %>
+  <%= t.strftime("%m/%d/%y at %I:%M%p") %>
 </p>
 </section>
 

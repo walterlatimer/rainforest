@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def login
   	if @user
+      user.update_attribute(:datetime, Time.now)
   		redirect_to root_path
   	end
   end
