@@ -1,9 +1,14 @@
+<% if @products.none? %>
+<td>No products of this category<td>
+<% end %>
 <% @products.each do |product| %>
-	<article class="product-module">
-		<p><%= image_tag product.photo.url(:medium) %></p>
-		<p>
-			<strong><%= link_to product.name.truncate(20), product %></strong><br />
-			$<%= product.formatted_price %>
-		</p>
-	</article>
+
+		<article class="product-module">
+			<p><%= image_tag product.photo.url(:medium) %></p>
+			<p>
+				<strong><%= link_to product.name.truncate(20), product %></strong><br />
+				$<%= product.formatted_price %>
+			</p>
+		</article>
+
 <% end %>
