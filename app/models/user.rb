@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	def has_access?(access_level)
+		self.access >= access_level
+	end
+
 	private
 	# Access level is 0 by default
 	def default_values

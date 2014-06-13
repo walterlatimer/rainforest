@@ -39,6 +39,6 @@
 
 <br>
 
-  <% if @user && @user.access > 1 %>
+  <% if @current_user.has_access?(3) %>
     <%= link_to 'New Product', new_product_path %>
   <% end %>
