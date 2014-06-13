@@ -41,7 +41,8 @@
     <h1><%= review.title %></h1>
     <p><%= review.comment %></p>
     <p class="comment-detail">
-      Added by <%= link_to review.user.display, user_path(review.user.username) %> on <%= review.created_at.strftime("%m/%d/%Y") %>.  <% if @current_user && (@current_user.access >= 2 || @current_user == review.user) %>
+      Added by <%= link_to review.user.display, user_path(review.user.username) %> on <%= review.created_at.strftime("%m/%d/%Y") %>.
+      <% if can_edit_review?(review) %>
       | <%= link_to 'Delete', review, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
     </p>

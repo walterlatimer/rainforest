@@ -107,8 +107,9 @@ header.navigation .search-bar .search-and-submit input[type=search] {
 	padding-top: 40px;
 }
 .user-reviews {
-	@include span-columns(6);
-	@include shift(3);
+	@include span-columns(8);
+	@include shift(2);
+	text-align: justify;
 	padding-top: 40px;
 	h3 {
 		text-align: center;
@@ -138,6 +139,9 @@ h1 .avatar {
 }
 h1.user {
 	text-align: center;
+}
+td {
+	padding: 5px;
 }
 
 
