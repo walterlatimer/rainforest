@@ -1,0 +1,48 @@
+<%= form_for(@product, :html => { :multipart => true}) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :price_in_cents %><br>
+    <%= f.number_field :price_in_cents %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br>
+    <!-- Added dropdown select for categories -->
+    <%= f.collection_select :category_id, Category.order(:name),:id,:name, include_blank: false %>
+  </div>
+  <div class="field">
+    <%= f.label :featured %><br>
+    <%= f.check_box :featured %>
+  </div>
+  <!-- Field for uploading photos -->
+  <div class="field">
+  <%= f.label :photo %><br>
+  <%= f.file_field :photo %>
+  </div> 
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
