@@ -1,0 +1,30 @@
+<h1>Users Admin</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Display</th>
+      <th>Avatar</th>
+      <th>Access</th>
+      <th colspan="3"></th>
+      <th>Last Login</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.display %></td>
+        <td><%= image_tag user.photo.url(:thumb), class: "avatar" %></td>
+        <td><%= user.user_type %></td>
+        <td><%= link_to 'View', user.username %></td>
+        <td><%= link_to 'Edit', edit_user_path(user.username) %></td>
+        <td><%= link_to 'Delete', user.username, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% t = user.updated_at %>
+          <td><%= t.strftime("%m/%d/%y at %I:%M%p") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

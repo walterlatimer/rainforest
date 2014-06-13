@@ -1,0 +1,48 @@
+<h1>Listing products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <!-- Added "Product" -->
+      <th>Product</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Featured</th>
+      <th colspan="3"></th>
+      <th>Listed</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    
+    <!-- Sorting by session sort preference -->
+    <% @products.each do |product| %>
+      <tr>
+        <!-- Added image thumb in index -->
+        <td><%= image_tag product.photo.url(:thumb) %></td>
+        <td><%= product.name %></td>
+        <td>$<%= product.formatted_price %></td>
+        <td><%= product.quantity %></td>
+        <td><%= product.description %></td>
+        <td><%= product.category.name %></td>
+        <% a = ("Featured" if true) || (" " if false) %>
+        <td><%= a %></td>
+        <td><%= link_to 'View', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Remove', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% t = product.updated_at %>
+        <td><%= t.strftime("%m/%d/%y %I:%M%p") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+  <% if @user && @user.access > 1 %>
+    <%= link_to 'New Product', new_product_path %>
+  <% end %>
