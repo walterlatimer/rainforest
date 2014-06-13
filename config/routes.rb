@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get "products/admin", to: "products#admin"
   get "users/admin", to: "users#admin"
   get "cart", to: "cart#add"
+  post "/users/:id/edit", to: "users#update"
   get "register", to: "users#new"
 
   
