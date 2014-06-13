@@ -17,7 +17,8 @@
 
 <p>
   <strong>Avatar url:</strong>
-  <%= @user.avatar_url %>
+  <br>
+  <%= image_tag @user.photo.url(:medium) %>
 </p>
 
 <p>

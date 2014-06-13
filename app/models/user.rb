@@ -2,6 +2,13 @@ class User < ActiveRecord::Base
 	before_save :default_values
 	has_many :reviews
 
+
+	has_attached_file :photo, styles: {
+		                        medium: "300x300#",
+		                        thumb: "100x100#"
+		                      },
+		                      default_url: "/images/:style/missing.png"
+  	validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 	validates :username, uniqueness: { case_sensitive: false },
                        presence: true,
                        format: { with: /\A(?=.*[a-z])[a-z\d]+\Z/i },
