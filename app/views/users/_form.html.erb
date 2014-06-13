@@ -22,14 +22,22 @@
     <%= f.label 'Display Name' %><br>
     <%= f.text_field :display %>
   </div>
+  <% if @current_user %>
   <div class="field">
   <%= f.label :photo %><br>
   <%= f.file_field :photo %>
   </div> 
-  
-    <%= f.hidden_field :access, value: 1 %>
-  <div class="actions">
-    <%= f.submit %>
+  <% end %>
+  <% if @current_user && @current_user.access >= 3 %>
+  <div class="field">
+    <%= f.label :access %><br>
+    <%= f.number_field :access %>
+  </div>
+  <% else %>
+  <%= f.hidden_field :access, value: 1 %>
+  <% end %>
+    <div class="actions">
+  <%= f.submit %>
   </div>
 <% end %>
 </section>

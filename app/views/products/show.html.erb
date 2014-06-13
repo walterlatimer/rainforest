@@ -35,13 +35,13 @@
 
 <div class="comment">
   <div class="comment-image">
-    <img src="http://localhost:3000/system/products/photos/000/000/007/medium/2014_San_Francisco_-_20.jpg?1402554207" alt="">
+    <%= image_tag review.user.photo.url(:thumb) %>
   </div>
   <div class="comment-content">
     <h1><%= review.title %></h1>
     <p><%= review.comment %></p>
     <p class="comment-detail">
-      Added by <%= review.user.display %> on <%= review.created_at.strftime("%m/%d/%Y") %>.
+      Added by <%= link_to review.user.display, user_path(review.user.id) %> on <%= review.created_at.strftime("%m/%d/%Y") %>.
     </p>
   </div>
 </div>

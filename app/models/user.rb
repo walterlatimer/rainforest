@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 		                        medium: "300x300#",
 		                        thumb: "100x100#"
 		                      },
-		                      default_url: "/images/:style/missing.png"
+		                      default_url: "http://www.peterscholer.com/Birds/Toucans-and-Barbets/i-jdzfdqz/0/Ti/20110901_Rainbow-billed%20Toucan-1721085579-O-Ti.jpg"
   	validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 	validates :username, uniqueness: { case_sensitive: false },
                        presence: true,
